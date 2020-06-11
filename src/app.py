@@ -8,9 +8,6 @@ from flask import Flask
 from flask_restful import Api
 from flask_restful_swagger import swagger
 
-
-
-
 class API:
 
     def __init__(self,db, testing=False):
@@ -21,7 +18,7 @@ class API:
         # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
         
         app.config['MONGODB_SETTINGS'] = { 
-            'host': 'mongodb://localhost/movie-bag' 
+            'host': os.environ.get('DB_CONNECTION_STRING')
         }
         db.init_app(app)
         # MIGRATE = Migrate(app, db)
